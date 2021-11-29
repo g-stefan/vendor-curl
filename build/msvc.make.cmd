@@ -22,11 +22,13 @@ if not "%ACTION%" == "make" goto :eof
 
 call :cmdX xyo-cc --mode=%ACTION% --source-has-archive curl
 
+if not exist output\ mkdir output
 if not exist temp\ mkdir temp
 
 set INCLUDE=%XYO_PATH_REPOSITORY%\include;%INCLUDE%
 set LIB=%XYO_PATH_REPOSITORY%\lib;%LIB%
 set WORKSPACE_PATH=%CD%
+set WORKSPACE_PATH_OUTPUT=%WORKSPACE_PATH%\output
 set WORKSPACE_PATH_BUILD=%WORKSPACE_PATH%\temp
 
 if exist %WORKSPACE_PATH_BUILD%\build.done.flag goto :eof
@@ -41,7 +43,7 @@ SET CMD_CONFIG=cmake
 SET CMD_CONFIG=%CMD_CONFIG% ../../source
 SET CMD_CONFIG=%CMD_CONFIG% -G "Ninja"
 SET CMD_CONFIG=%CMD_CONFIG% -DCMAKE_BUILD_TYPE=Release
-SET CMD_CONFIG=%CMD_CONFIG% -DCMAKE_INSTALL_PREFIX=%WORKSPACE_PATH_BUILD%\curl
+SET CMD_CONFIG=%CMD_CONFIG% -DCMAKE_INSTALL_PREFIX=%WORKSPACE_PATH_OUTPUT%
 SET CMD_CONFIG=%CMD_CONFIG% -DCMAKE_USE_OPENSSL=1
 
 if not exist %WORKSPACE_PATH_BUILD%\build.configured.flag %CMD_CONFIG%
@@ -55,7 +57,7 @@ if errorlevel 1 goto makeError
 ninja clean
 if errorlevel 1 goto makeError
 
-del /F /Q "..\curl\bin\curl-config"
+del /F /Q "..\..\output\bin\curl-config"
 
 goto buildDone
 
