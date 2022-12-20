@@ -1,0 +1,9 @@
+{
+	"project": {
+		"name" : "curl",
+		"type" : "xyo-cpp",
+		"SPDX-License-Identifier": "LicenseRef-",
+		"sourceLink" : "https://curl.haxx.se/download.html",
+		"version" : "7.82.0"
+	}
+}
