@@ -4,6 +4,9 @@
 		"type" : "xyo-cpp",
 		"SPDX-License-Identifier": "curl",
 		"sourceLink" : "https://curl.haxx.se/download.html",
-		"version" : "7.82.0"
+		"version" : "7.87.0",
+		"hasRelease" : true,
+		"noVersion" : true,
+		"githubRelease" : true
 	}
 }
