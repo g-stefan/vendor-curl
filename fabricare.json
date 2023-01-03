@@ -1,13 +1,17 @@
 {
-	"project": {
-		"name" : "curl",
+	"solution": {
+		"name" : "vendor-curl",
 		"type" : "xyo-cpp",
-		"SPDX-License-Identifier": "curl",
-		"sourceLink" : "https://curl.haxx.se/download.html",
-		"version" : "7.87.0",
-		"hasRelease" : true,
-		"noVersion" : true,
-		"githubRelease" : true,
-		"githubRepository" : "vendor-curl"
+		"projects": [
+			{
+				"name" : "curl",
+				"SPDX-License-Identifier": "curl",
+				"sourceLink" : "https://curl.haxx.se/download.html",
+				"version" : "7.87.0",
+				"noVersion" : true
+			}
+		],
+		"releaseName" : "curl",
+		"hasGithub" : true
 	}
 }
