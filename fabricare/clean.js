@@ -8,4 +8,3 @@ messageAction("clean");
 Shell.removeDirRecursively("output");
 Shell.removeDirRecursively("temp");
 Shell.removeDirRecursivelyForce("source");
-
