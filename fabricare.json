@@ -7,7 +7,7 @@
 				"name" : "curl",
 				"SPDX-License-Identifier": "curl",
 				"sourceLink" : "https://curl.haxx.se/download.html",
-				"version" : "8.0.1",
+				"version" : "8.5.0",
 				"noVersion" : true
 			}
 		],
