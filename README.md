@@ -5,7 +5,7 @@ Build scripts for compiling [curl](https://curl.se/) with MSVC compiler toolset,
 
 ## License
 
-Copyright (c) 2021-2023 Grigore Stefan
+Copyright (c) 2021-2024 Grigore Stefan
 Licensed under the [MIT](LICENSE) license.
 
 **This is a compilation of different works.**
