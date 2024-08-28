@@ -32,18 +32,32 @@ if (!Shell.fileExists("temp/build.config.flag")) {
 	cmdConfig = "cmake";
 	cmdConfig += " ../../source";
 	cmdConfig += " -G \"Ninja\"";
-	cmdConfig += " -DCMAKE_BUILD_TYPE=Release";
-	cmdConfig += " -DCMAKE_INSTALL_PREFIX=" + Shell.realPath(Shell.getcwd()) + "\\output";
-	cmdConfig += " -DCURL_USE_OPENSSL=1";
 
-	runInPath("temp/cmake", function() {
+	if (Fabricare.isDynamic()) {
+
+		cmdConfig += " -DCMAKE_BUILD_TYPE=Release";
+		cmdConfig += " -DCMAKE_INSTALL_PREFIX=" + Shell.realPath(Shell.getcwd()) + "\\output";
+		cmdConfig += " -DCURL_USE_OPENSSL=1";
+		cmdConfig += " -DBUILD_SHARED_LIBS=ON";
+
+	};
+
+	if (Fabricare.isStatic()) {
+		cmdConfig += " -DCMAKE_BUILD_TYPE=Release";
+		cmdConfig += " -DCMAKE_INSTALL_PREFIX=" + Shell.realPath(Shell.getcwd()) + "\\output";
+		cmdConfig += " -DCURL_USE_OPENSSL=1";
+		cmdConfig += " -DBUILD_SHARED_LIBS=OFF";
+		cmdConfig += " -DWIN32_MT_BUILD=ON";
+	};
+
+	runInPath("temp/cmake", function () {
 		exitIf(Shell.system(cmdConfig));
 	});
 
 	Shell.filePutContents("temp/build.config.flag", "done");
 };
 
-runInPath("temp/cmake", function() {
+runInPath("temp/cmake", function () {
 	exitIf(Shell.system("ninja"));
 	exitIf(Shell.system("ninja install"));
 	exitIf(Shell.system("ninja clean"));
