@@ -39,6 +39,7 @@ if (!Shell.fileExists("temp/build.config.flag")) {
 		cmdConfig += " -DCMAKE_INSTALL_PREFIX=" + Shell.realPath(Shell.getcwd()) + "\\output";
 		cmdConfig += " -DCURL_USE_OPENSSL=1";
 		cmdConfig += " -DBUILD_SHARED_LIBS=ON";
+		cmdConfig += " -DCURL_USE_LIBPSL=0FF";
 
 	};
 
@@ -48,6 +49,7 @@ if (!Shell.fileExists("temp/build.config.flag")) {
 		cmdConfig += " -DCURL_USE_OPENSSL=1";
 		cmdConfig += " -DBUILD_SHARED_LIBS=OFF";
 		cmdConfig += " -DWIN32_MT_BUILD=ON";
+		cmdConfig += " -DCURL_USE_LIBPSL=0FF";
 	};
 
 	runInPath("temp/cmake", function () {
